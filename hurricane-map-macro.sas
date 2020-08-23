@@ -1,9 +1,12 @@
 /*
-	Final Project
+	STA 402 Final Project
 	Author: Tyler Sagendorf
 	Purpose: Create a macro that generates a hurricane 
-	tracking map for a given year, and colors the points
+	season summary map for a given year, and colors the points
 	by the type of storm.
+	
+	The map should look something like the following:
+	https://en.wikipedia.org/wiki/2017_Atlantic_hurricane_season#/media/File:2017_Atlantic_hurricane_season_summary_map.png
 
 */
 
@@ -34,7 +37,7 @@ data weather1;
 	/* Get observations */
 	if substr(a,1,1)="A" then delete;
 	year1 = substr(a,1,4);
-/* For the Atlantic Basin, latitude is positive and longitude is negative */
+	/* For the Atlantic Basin, latitude is positive and longitude is negative */
 	long=-long;
 	/* Make year numeric */
    	year = input(year1, 8.);
@@ -61,7 +64,7 @@ run;
 
 
 /* MACRO */
-%macro hurricaneMap(year=2017);
+%macro hurricaneMap(year=2017); /* Set 2017 as the default year */
 
 /* Weather data for desired year */
 data anno1;
